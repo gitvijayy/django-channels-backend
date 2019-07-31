@@ -15,6 +15,7 @@ django-extensions="*"
 channels="*"
 channels_redis="*"
 psycopg2-binary="*"
+dj_database_url="*"
 
 [requires]
 python_version = "3.6"
