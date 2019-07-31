@@ -17,6 +17,7 @@ channels_redis="*"
 psycopg2-binary="*"
 dj_database_url="*"
 gunicorn="*"
+whitenoise="*"
 
 [requires]
 python_version = "3.6"
