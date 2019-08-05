@@ -105,7 +105,16 @@ CHANNEL_LAYERS = {
 # }
 
 # Postgres Db Setup
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('DB_NAME', ''),
+#         'USER': os.environ.get('DB_USER', ''),
+#         'PASSWORD': os.environ.get('DB_PASS', ''),
+#         'HOST': 'localhost',
+#         'PORT': ''
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -154,6 +163,7 @@ STATICFILES_DIRS = (
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-prod_db = dj_database_url.config(conn_max_age=500)
+# prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES = {}
-DATABASES['default'].update(prod_db)
+# DATABASES['default'].update(prod_db)
+DATABASES['default'] = dj_database_url.config(conn_max_age=500)
