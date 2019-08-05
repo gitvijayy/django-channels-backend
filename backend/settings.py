@@ -105,16 +105,7 @@ CHANNEL_LAYERS = {
 # }
 
 # Postgres Db Setup
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('DB_NAME', 'chat'),
-#         'USER': os.environ.get('DB_USER', 'admin'),
-#         'PASSWORD': os.environ.get('DB_PASS', 'admin'),
-#         'HOST': 'localhost',
-#         'PORT': '5432'
-#     }
-# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -164,4 +155,5 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES = {}
 DATABASES['default'].update(prod_db)
