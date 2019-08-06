@@ -26,7 +26,7 @@ SECRET_KEY = 'a@fpxpji7yc&v2&-c#5s4&atsw8zzv(7^=c&$n+lhg(#n-ynk4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['djangochannel1.herokuapp.com']
+ALLOWED_HOSTS = ['djangochannel1.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -105,16 +105,16 @@ CHANNEL_LAYERS = {
 # }
 
 # Postgres Db Setup
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get('DB_NAME', ''),
-#         'USER': os.environ.get('DB_USER', ''),
-#         'PASSWORD': os.environ.get('DB_PASS', ''),
-#         'HOST': 'localhost',
-#         'PORT': ''
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME', 'chat'),
+        'USER': os.environ.get('DB_USER', 'admin'),
+        'PASSWORD': os.environ.get('DB_PASS', 'admin'),
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -163,7 +163,5 @@ STATICFILES_DIRS = (
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# prod_db = dj_database_url.config(conn_max_age=500)
-DATABASES = {}
-# DATABASES['default'].update(prod_db)
-DATABASES['default'] = dj_database_url.config(conn_max_age=500)
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
